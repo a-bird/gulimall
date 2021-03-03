@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.utils;
+package com.zhulin.common.utils;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 

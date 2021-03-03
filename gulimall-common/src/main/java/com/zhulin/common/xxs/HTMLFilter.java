@@ -1,4 +1,4 @@
-package io.renren.common.xss;
+package com.zhulin.common.xxs;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;

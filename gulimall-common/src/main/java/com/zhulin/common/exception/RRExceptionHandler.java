@@ -6,7 +6,7 @@
  * 版权所有，侵权必究！
  */
 
-package io.renren.common.exception;
+package com.zhulin.common.exception;
 
 import io.renren.common.utils.R;
 import org.apache.shiro.authz.AuthorizationException;
