@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: gulimall-coupon
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 192.168.1.142:8848 #Nacos服务注册中心地址
+      config:
+        server-addr: 192.168.1.142:8848 #Nacos作为配置中心地址
+        file-extension: yaml #指定yaml格式配置TEST_GROUP
+        group: DEFAULT_GROUP
+        namespace: gulimall-coupon
+
+        extension-configs[0]:
+          data-id: datasource.yml
+          group: DEFAULT_GROUP
+

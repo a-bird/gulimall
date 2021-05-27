@@ -1,5 +1,7 @@
 package com.zhulin.gulimall.product.service.impl;
 
+import com.zhulin.common.utils.PageUtils;
+import com.zhulin.common.utils.Query;
 import org.springframework.stereotype.Service;
 import java.util.Map;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
