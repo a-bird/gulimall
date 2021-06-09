@@ -32,15 +32,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--spring boot 2.2.2-->
+            <!--spring boot 2.2.5-->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.2.RELEASE</version>
+                <version>2.2.5.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!--spring cloud Hoxton.SR1-->
+            <!--spring cloud Hoxton.SR3-->
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>

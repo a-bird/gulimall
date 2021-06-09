@@ -61,7 +61,6 @@ mybatis-plus:
     call-setters-on-nulls: true
     jdbc-type-for-null: 'null'
 
-
 renren:
   redis:
     open: false
