@@ -33,7 +33,7 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
     @Override
     public List<CategoryEntity> getListTree() {
         List<CategoryEntity> categoryEntities = baseMapper.selectByMap(null);
-        categoryEntities.stream().filter(categoryEntity -> (
+        List<CategoryEntity> categoryEntityList = categoryEntities.stream().filter(categoryEntity -> (
                 categoryEntity.getParentCid() == 0
         )).map((category) -> {
             category.setChildCategory(findChildCategory(category, categoryEntities));
@@ -41,7 +41,13 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
         }).sorted((menu1, menu2) -> {
             return (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort());
         }).collect(Collectors.toList());
-        return categoryEntities;
+        return categoryEntityList;
+    }
+
+    @Override
+    public void deleteMenuByIds(List<Long> asList) {
+        // TODO 删除菜单判断
+        baseMapper.deleteBatchIds(asList);
     }
 
     /**
@@ -52,15 +58,15 @@ public class CategoryServiceImpl extends ServiceImpl<CategoryDao, CategoryEntity
      * @return
      */
     private List<CategoryEntity> findChildCategory(CategoryEntity root, List<CategoryEntity> allCategory) {
-        List<CategoryEntity> collect = allCategory.stream().filter(categoryEntity -> {
+        List<CategoryEntity> categoryEntities = allCategory.stream().filter(categoryEntity -> {
             return categoryEntity.getParentCid().longValue() == root.getCatId().longValue();
-        }).map(category -> {
+        }).map(category-> {
             category.setChildCategory(findChildCategory(category, allCategory));
             return category;
         }).sorted((menu1, menu2) -> {
             return (menu1.getSort() == null ? 0 : menu1.getSort()) - (menu2.getSort() == null ? 0 : menu2.getSort());
         }).collect(Collectors.toList());
-        return collect;
+        return categoryEntities;
     }
 
 }

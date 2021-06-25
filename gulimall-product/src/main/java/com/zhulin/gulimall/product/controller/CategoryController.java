@@ -38,7 +38,7 @@ public class CategoryController {
     //@RequiresPermissions("product:category:list")
     public R listTree(@RequestParam Map<String, Object> params){
         List<CategoryEntity> categoryEntities = categoryService.getListTree();
-        return R.ok().put("page", categoryEntities);
+        return R.ok().put("data", categoryEntities);
     }
 
 
@@ -76,13 +76,23 @@ public class CategoryController {
     }
 
     /**
+     * 修改
+     */
+    @RequestMapping("/update/sort")
+    //@RequiresPermissions("product:category:update")
+    public R updateSort(@RequestBody CategoryEntity[] category){
+        categoryService.updateBatchById(Arrays.asList(category));
+        return R.ok();
+    }
+
+    /**
      * 删除
      */
     @RequestMapping("/delete")
     //@RequiresPermissions("product:category:delete")
     public R delete(@RequestBody Long[] catIds){
-		categoryService.removeByIds(Arrays.asList(catIds));
-
+//		categoryService.removeByIds(Arrays.asList(catIds));
+		categoryService.deleteMenuByIds(Arrays.asList(catIds));
         return R.ok();
     }
 
